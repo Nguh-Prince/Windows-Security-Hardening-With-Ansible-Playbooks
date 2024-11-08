@@ -1,8 +1,9 @@
 ---
-- name: ping test for windows clients
-  hosts: all
-  become: false
-  gather_facts: false
+- name: Test WinRM connection
+  hosts: accounting
+  gather_facts: no
   tasks:
-    - name: pingtest
+    - name: Test connection
       win_ping:
+      vars:
+        ansible_winrm_server_cert_validation: ignore
